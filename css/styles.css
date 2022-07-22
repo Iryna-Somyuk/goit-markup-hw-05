@@ -539,9 +539,50 @@ a {
 }
 
 .progect-item {
+   
     min-width: 370px;
     flex-basis: calc((100%-(var(--indent)*(var(--items)-1))/var(--items)));   
 }
+
+
+
+.progect-overlay {
+    
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translateY(100%);
+    
+    width: 100%;
+    height: 100%;
+    padding: 63px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--hero-title-color);
+    font-size: 18px;
+    line-height: calc(28 / 18);
+    letter-spacing: 0.03em;
+    user-select: none;
+    
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transition: transform 250ms ease-in-out;
+
+}
+.progect-item:hover .overlay-text {
+    transform: translateY(0);
+}
+
 .progect-item:hover,
 .progect-item:focus,
 .progect-item:active {
