@@ -9,6 +9,8 @@
 
     --indent: 15px;
     --items: 3;
+
+    --anim: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -119,6 +121,7 @@ a {
     line-height: calc(16 / 14);
     letter-spacing: 0.02em;
     text-decoration: none;
+    transition: color var(--anim);
 }
 
 .nav-link:hover,
@@ -141,6 +144,7 @@ a {
     height: 4px;
     background-color: var(--accent-color);
     border-radius: 2px;
+    
 }
 
 .header-link {
@@ -156,7 +160,8 @@ a {
     font-size: 14px;
     line-height: calc(16 / 14);
     letter-spacing: 0.02em;
-    text-decoration: none;    
+    text-decoration: none;   
+    transition: color var(--anim); 
 }
 
 .header-link:hover,
@@ -188,9 +193,24 @@ a {
     line-height: calc(60 / 44);
     text-align: center;
     letter-spacing: 0.06em;
-    text-transform: uppercase;    
+    text-transform: uppercase;   
+    
+    animation: title-fly 600ms ease-in-out 500ms;
+
 }
 
+@keyframes title-fly {
+    0% {
+        opasity: 0;
+        transform: translateY(-300px) scale(0.2);
+    }
+ 
+    100% {
+        opasity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
 .hero-btn {
     font-family: inherit;
     color: var(--hero-title-color);
@@ -208,6 +228,19 @@ a {
 
     padding: 10px 32px;
     min-width: 200px;
+    transition: box-shadow var(--anim);
+    animation: btn-anim 2000ms ease 2000ms;
+
+}
+
+@keyframes btn-anim {
+    0% {
+        background-color: #757575;
+    }
+    100% {
+        background-color: var(--accent-color);
+    }
+    
 }
 
 .hero-btn:hover,
@@ -366,6 +399,8 @@ a {
     border-radius: 50%;
     color: var(--socials-icon-color);
 
+    transition: color var(--anim), background-color var(--anim);
+
     /*outline: 1px solid red;*/
 }
 
@@ -396,6 +431,8 @@ a {
     border: 1px solid #AFB1B8;
     border-radius: 4px; 
     color: var(--socials-icon-color);
+
+    transition: border var(--anim), color var(--anim);
 }
 
 .clients-icon {
@@ -445,7 +482,9 @@ a {
     font-size: 14px;
     line-height: calc(24 / 14);
     letter-spacing: 0.03em;
-    text-decoration: none;          
+    text-decoration: none;  
+    
+    transition: color var(--anim), text-shadow var(--anim);
 }
 
 .footer-link:hover,
@@ -486,6 +525,7 @@ a {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     color: var(--hero-title-color);
+    transition: background-color var(--anim);
 
 }
 
@@ -522,6 +562,8 @@ a {
     letter-spacing: 0.03em;
     text-align: center;
     cursor: pointer;
+
+    transition: color var(--anim), background-color var(--anim), box-shadow var(--anim);
 }
 .filtre-btn:hover,
 .filtre-btn:focus,
@@ -539,18 +581,16 @@ a {
 }
 
 .progect-item {
-   
+
     min-width: 370px;
     flex-basis: calc((100%-(var(--indent)*(var(--items)-1))/var(--items)));   
+
+    transition: box-shadow var(--anim);
 }
 
-
-
 .progect-overlay {
-    
     position: relative;
     overflow: hidden;
-    
 }
 
 .overlay-text {
@@ -576,9 +616,9 @@ a {
     
     background-color: rgba(33, 150, 243, 0.9);
 
-    transition: transform 250ms ease-in-out;
-
+    transition: transform var(--anim);
 }
+
 .progect-item:hover .overlay-text {
     transform: translateY(0);
 }
@@ -624,7 +664,10 @@ a {
     height: 100%;
 
     background-color: rgba(0, 0, 0, 0.2);
+
+    transition: opacity var(--anim), visibility var(--anim);
 }
+
 .backdrop.is-hidden {
     opacity: 0;
     visibility: hidden;
@@ -632,14 +675,29 @@ a {
 }
 
 .modal {
-    position: relative;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+   
     width: 528px;
     height: 518px;
 
     background-color: #FFFFFF;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+    opacity: 1;    
+    transition: transform 600ms ease-in-out, opacity 00ms ease-in-out;
 }
+
+
+.backdrop.is-hidden .modal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2) rotate(0.25turn);
+}
+
+
 .modal-btn {
     position: absolute;
     top: 8px;
@@ -658,13 +716,11 @@ a {
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
 
-
 }
+
 .modal-icon {
     fill: currentColor;
 }
-
-
 
 
 
