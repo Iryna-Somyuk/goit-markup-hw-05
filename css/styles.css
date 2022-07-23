@@ -28,6 +28,7 @@ body {
   color: var(--brand-color);
   font-family: Roboto, sans-serif;
   margin: 0;
+  padding: 80px;
 }
 
 ul {
@@ -69,6 +70,12 @@ a {
 /* Studio*/
 
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
     border: 1px solid #ECECEC;
 }
  
@@ -194,7 +201,7 @@ a {
     text-align: center;
     letter-spacing: 0.06em;
     text-transform: uppercase;   
-    
+
     animation: title-fly 600ms ease-in-out 500ms;
 
 }
@@ -229,6 +236,7 @@ a {
     padding: 10px 32px;
     min-width: 200px;
     transition: box-shadow var(--anim);
+    
     animation: btn-anim 2000ms ease 2000ms;
 
 }
@@ -693,7 +701,7 @@ a {
 
 
 .backdrop.is-hidden .modal {
-    opacity: 0;
+    opacity: 1;
     transform: translate(-50%, -50%) scale(0.2) rotate(0.25turn);
 }
 
